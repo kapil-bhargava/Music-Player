@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to bottom right, blue 20%, rgb(163, 52, 185) 80%);
+            padding: 20px;
+        }
+
+        .head {
+            /* background-color: red; */
+            display: flex;
+            height: 90%;
+        }
+
+        .left {
+            width: 100%;
+            /* background-color: crimson; */
+            /* background-color: rgb(17, 31, 58); */
+            background: linear-gradient(to bottom right, blue 20%, rgb(163, 52, 185) 80%);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .right {
+            width: 10%;
+            background-color: rgb(0, 153, 255);
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            /* margin: 10px; */
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+            /* margin: 1px; */
+        }
+
+        span {
+            color: white;
+        }
+
+        button.prev-btn {
+            background-color: green;
+        }
+
+        button.next-btn {
+            background-color: blue;
+        }
+
+        .right input {
+            transform: rotate(-90deg);
+            margin-top: 70px;
+            width: 100%;
+        }
+
+        #seekSlider {
+            width: 70%;
+        }
+
+        .img-div {
+            /* background-color: green; */
+            border: 1px solid white;
+            /* max-height: 502px;
+            min-height: 400px;
+            max-width: 502px;
+            min-width: 90%; */
+            /* Use clamp for dynamic height */
+            height: clamp(30%, 300px, 502px);
+
+            /* Use clamp for dynamic width */
+            width: clamp(90%, 300px, 502px);
+
+            margin: auto;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        /* h2 {
+            text-align: center;
+            
+            color: linear-gradient(to bottom right, blue  20%, rgb(163, 52, 185) 80%);
+            font-size: 70px;
+            margin-top: 100px;
+        } */
+        h2 {
+            text-align: center;
+            font-size: 40px;
+            /* margin-top: 100px; */
+
+            /* Apply gradient as background */
+            background: linear-gradient(to left, rgb(255, 255, 255) 30%, rgb(0, 0, 0) 70%);
+
+            /* Clip background to text */
+            /* -webkit-background-clip: text; */
+            background-clip: text;
+
+            /* Make the text transparent to show the gradient */
+            color: transparent;
+            color: white;
+        }
+
+        .status {
+            color: white;
+        }
+
+        @media only screen and (max-width:768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            #seekSlider {
+                width: 80%;
+            }
+
+            .img-div {
+                /* height: clamp(20%, 300px, 300px);
+                width: 100%; */
+                height: clamp(30%, 300px, 502px);
+
+                /* Use clamp for dynamic width */
+                width: clamp(90%, 300px, 502px);
+
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            button {
+                padding: 5px 10px;
+                margin: 5px;
+            }
+
+            button.prev-btn,
+            button.next-btn {
+                margin: 0;
+            }
+
+            span.songName {
+                display: block;
+                text-align: center;
+            }
+
+            #pp {
+                display: block;
+                text-align: center;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>ZN Infotech Music Player</h2> <br>
+        <div class="head">
+            <div class="left">
+                <div class="img-div">
+                    <img id="pic" src="/bb2.jpg" alt="">
+                </div> <br>
+                <div class="status">
+                    <b id="pp">Playing :</b><span class="songName">...</span>
+                </div>
+                <br>
+                <input id="seekSlider" type="range" min="0" max="100" value="0" step="0.0000001"> <br>
+                <audio id="ad">
+                    <source id="audio">
+                    <!-- <source id="audio" src="audio/Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3"
+                        type="audio/mpeg">
+                    <source src="audio/De Taali - Bhool Bhulaiyaa 2 320 Kbps.mp3" type="audio/mpeg">
+                    <source src="audio/Mere Mehboob Mere Sanam - Bad Newz 320 Kbps.mp3" type="audio/mpeg"> -->
+                </audio>
+
+                <button class="play-btn" onclick="playSong()">Play</button>
+                <button class="prev-btn" onclick="prevSong()">&lt; Previous Song</button>
+                <button class="next-btn" onclick="nextSong()">Next Song &gt;</button>
+            </div>
+            <!-- <div class="right">
+                <p>Volume Controller</p>
+                <input type="range" min="0" value="0" max="100" step="0.01">
+            </div> -->
+        </div>
+        <!-- <h2>Created by Kapil</h2> -->
+    </div>
+
+    <script>
+        var a = 0;
+        var audio = document.getElementById("audio");
+        var ad = document.getElementById("ad");
+        var songName = document.querySelector(".songName");
+        var playBtn = document.querySelector(".play-btn");
+        var prevBtn = document.querySelector(".prev-btn");
+        var nextBtn = document.querySelector(".next-btn");
+        var seekSlider = document.getElementById("seekSlider");
+        var songNumber = 0;
+
+        const songNames = [
+            {
+                name: "Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3",
+                src: "audio/Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3",
+                imgSrc: "bb2.jpg"
+            },
+            {
+                name: "De Taali - Bhool Bhulaiyaa 2 320 Kbps.mp3",
+                src: "audio/De Taali - Bhool Bhulaiyaa 2 320 Kbps.mp3",
+                imgSrc: "de-tali.jpg"
+            },
+            {
+                name: "Mere Mehboob Mere Sanam - Bad Newz 320 Kbps.mp3",
+                src: "audio/Mere Mehboob Mere Sanam - Bad Newz 320 Kbps.mp3",
+                imgSrc: "mehboob.jpg"
+            }
+        ]
+
+        const playSong = () => {
+            // alert(songNumber)
+            if (a == 0) {
+                if (ad.paused) {
+                    pic.src = songNames[songNumber].imgSrc;
+                    ad.src = songNames[songNumber].src;
+                    ad.play();
+                    playBtn.textContent = "Pause";
+                    songName.textContent = songNames[songNumber].name;
+                    // updateSeekBar();
+                    a = 1;
+                }
+            }
+            else {
+                ad.pause();
+                playBtn.textContent = "Play";
+                a = 0;
+            }
+        };
+
+        const nextSong = () => {
+            songNumber++;
+            // alert(songNumber)
+            pic.src = songNames[songNumber].imgSrc;
+            ad.src = songNames[songNumber].src;
+            ad.play();
+            songName.textContent = songNames[songNumber].name;
+            // a = 2
+
+        }
+        const prevSong = () => {
+            // alert(songNumber)
+            songNumber--;
+            pic.src = songNames[songNumber].imgSrc;
+            ad.src = songNames[songNumber].src;
+            ad.play();
+            songName.textContent = songNames[songNumber].name;
+            // a = 2
+
+        }
+
+        ad.addEventListener('timeupdate', updateSeekBar);
+
+        // Update the seek bar as the song plays
+        function updateSeekBar() {
+            const currentTime = ad.currentTime;
+            const duration = ad.duration;
+            seekSlider.value = (currentTime / duration) * 100; // Update slider percentage
+        }
+
+        // Seek through the song when the slider is moved
+        seekSlider.addEventListener('input', () => {
+            const seekTo = (seekSlider.value / 100) * ad.duration;
+            ad.currentTime = seekTo;
+        });
+
+
+
+    </script>
+</body>
+
+</html>
