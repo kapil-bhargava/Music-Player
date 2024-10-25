@@ -29,15 +29,12 @@
         }
 
         .head {
-            /* background-color: red; */
             display: flex;
             height: 90%;
         }
 
         .left {
             width: 100%;
-            /* background-color: crimson; */
-            /* background-color: rgb(17, 31, 58); */
             background: linear-gradient(to bottom right, blue 20%, rgb(163, 52, 185) 80%);
             padding: 20px;
             text-align: center;
@@ -51,13 +48,11 @@
 
         button {
             padding: 10px 20px;
-            /* margin: 10px; */
             background-color: black;
             color: white;
             border: none;
             cursor: pointer;
             margin: 10px 0;
-            /* margin: 1px; */
         }
 
         span {
@@ -83,49 +78,24 @@
         }
 
         .img-div {
-            /* background-color: green; */
             border: 1px solid white;
-            /* max-height: 502px;
-            min-height: 400px;
-            max-width: 502px;
-            min-width: 90%; */
-            /* Use clamp for dynamic height */
             height: clamp(30%, 300px, 502px);
-
-            /* Use clamp for dynamic width */
             width: clamp(90%, 300px, 502px);
-
             margin: auto;
         }
 
         img {
             width: 100%;
         }
-
-        /* h2 {
-            text-align: center;
-            
-            color: linear-gradient(to bottom right, blue  20%, rgb(163, 52, 185) 80%);
-            font-size: 70px;
-            margin-top: 100px;
-        } */
         h2 {
             text-align: center;
             font-size: 40px;
-            /* margin-top: 100px; */
-
-            /* Apply gradient as background */
             background: linear-gradient(to left, rgb(255, 255, 255) 30%, rgb(0, 0, 0) 70%);
-
-            /* Clip background to text */
-             -webkit-background-clip: text;
+            -webkit-background-clip: text;
             background-clip: text;
-
-            /* Make the text transparent to show the gradient */
             color: transparent;
             color: white;
         }
-
         .status {
             color: white;
         }
@@ -137,21 +107,16 @@
 
             h2 {
                 font-size: 20px;
-color:white;
+                color: white;
             }
 
             #seekSlider {
                 width: 80%;
             }
 
-            .img-div {
-                /* height: clamp(20%, 300px, 300px);
-                width: 100%; */
+            .img-div {       
                 height: clamp(30%, 300px, 502px);
-
-                /* Use clamp for dynamic width */
                 width: clamp(90%, 300px, 502px);
-
             }
 
             img {
@@ -199,12 +164,7 @@ color:white;
                 <input id="seekSlider" type="range" min="0" max="100" value="0" step="0.0000001"> <br>
                 <audio id="ad">
                     <source id="audio">
-                    <!-- <source id="audio" src="audio/Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3"
-                        type="audio/mpeg">
-                    <source src="audio/De Taali - Bhool Bhulaiyaa 2 320 Kbps.mp3" type="audio/mpeg">
-                    <source src="audio/Mere Mehboob Mere Sanam - Bad Newz 320 Kbps.mp3" type="audio/mpeg"> -->
                 </audio>
-
                 <button class="play-btn" onclick="playSong()">Play</button>
                 <button class="prev-btn" onclick="prevSong()">&lt; Previous Song</button>
                 <button class="next-btn" onclick="nextSong()">Next Song &gt;</button>
@@ -214,7 +174,6 @@ color:white;
                 <input type="range" min="0" value="0" max="100" step="0.01">
             </div> -->
         </div>
-        <!-- <h2>Created by Kapil</h2> -->
     </div>
 
     <script>
