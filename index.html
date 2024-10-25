@@ -237,54 +237,14 @@
             }
         };
 
-        // const nextSong = () => {
-        //     if (songNames.length > 0) {
-        //         songNumber++;
-        //         songPrint.textContent = songNumber + 1;
-        //         pic.src = songNames[songNumber].imgSrc;
-        //         ad.src = songNames[songNumber].src;
-        //         ad.play();
-        //         songName.textContent = songNames[songNumber].name;
-        //     }
-        //     else{
-        //         alert("No more songs");
-        //     }
-        // }
-        // const nextSong = () => {
-        //     if (songNames.length > 3 && songNumber >= 3) {
-        //         alert("No more songs");
-        //     } else if (songNames.length > 0) {
-        //         songNumber++;
-        //         songPrint.textContent = songNumber + 1;
-        //         pic.src = songNames[songNumber].imgSrc;
-        //         ad.src = songNames[songNumber].src;
-        //         ad.play();
-        //         songName.textContent = songNames[songNumber].name;
-        //     } else {
-        //         alert("No more songs");
-        //     }
-        // }
-
-
-        // const prevSong = () => {
-        //     // alert(songNumber)
-        //     songNumber--;
-        //     songPrint.textContent = songNumber + 1;
-        //     pic.src = songNames[songNumber].imgSrc;
-        //     ad.src = songNames[songNumber].src;
-        //     ad.play();
-        //     songName.textContent = songNames[songNumber].name;
-        //     // a = 2
-
-        // }
-
-
+       
         const nextSong = () => {
             if (songNumber >= 2) {
                 alert("No more songs");
             } else {
                 songNumber++;
                 songPrint.textContent = songNumber + 1;
+                playBtn.textContent = "Pause";
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
                 ad.play();
@@ -298,6 +258,7 @@
             } else {
                 songNumber--;
                 songPrint.textContent = songNumber + 1;
+                playBtn.textContent = "Pause";
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
                 ad.play();
