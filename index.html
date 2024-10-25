@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
+    <!-- (Fontawesome) Icons link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -153,6 +155,10 @@
 
 
         }
+        i{
+            color: white;
+            margin: 20px 10px;
+        }
     </style>
 </head>
 
@@ -175,9 +181,11 @@
                 <audio id="ad">
                     <source id="audio">
                 </audio>
-                <button class="play-btn" onclick="playSong()">Play</button>
-                <button class="prev-btn" onclick="prevSong()">&lt; Previous Song</button>
-                <button class="next-btn" onclick="nextSong()">Next Song &gt;</button>
+                <i class="fa-solid fa-backward-step" onclick="prevSong()"></i>
+                <i id="pl" class="fa-solid fa-play" onclick="playSong()"></i>
+                <!-- <i class="fa-solid fa-pause"></i> -->
+                <i class="fa-solid fa-forward-step" onclick="nextSong()"></i>
+               
             </div>
             <!-- <div class="right">
                 <p>Volume Controller</p>
@@ -191,8 +199,9 @@
         var a = 0;
         var audio = document.getElementById("audio");
         var ad = document.getElementById("ad");
+        var playBtn = document.getElementById("pl");
         var songName = document.querySelector(".songName");
-        var playBtn = document.querySelector(".play-btn");
+        // var playBtn = document.querySelector(".play-btn");
         var prevBtn = document.querySelector(".prev-btn");
         var nextBtn = document.querySelector(".next-btn");
         var seekSlider = document.getElementById("seekSlider");
@@ -224,7 +233,8 @@
                     pic.src = songNames[songNumber].imgSrc;
                     ad.src = songNames[songNumber].src;
                     ad.play();
-                    playBtn.textContent = "Pause";
+                    playBtn.classList.remove("fa-play");
+                    playBtn.classList.add("fa-pause");
                     songName.textContent = songNames[songNumber].name;
                     // updateSeekBar();
                     a = 1;
@@ -232,7 +242,9 @@
             }
             else {
                 ad.pause();
-                playBtn.textContent = "Play";
+                // playBtn.textContent = "Play";
+                playBtn.classList.remove("fa-pause");
+                playBtn.classList.add("fa-play");
                 a = 0;
             }
         };
@@ -244,10 +256,11 @@
             } else {
                 songNumber++;
                 songPrint.textContent = songNumber + 1;
-                playBtn.textContent = "Pause";
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
                 ad.play();
+                playBtn.classList.remove("fa-play");
+                playBtn.classList.add("fa-pause");
                 songName.textContent = songNames[songNumber].name;
             }
         };
@@ -258,10 +271,11 @@
             } else {
                 songNumber--;
                 songPrint.textContent = songNumber + 1;
-                playBtn.textContent = "Pause";
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
                 ad.play();
+                playBtn.classList.remove("fa-play");
+                playBtn.classList.add("fa-pause");
                 songName.textContent = songNames[songNumber].name;
             }
         };
