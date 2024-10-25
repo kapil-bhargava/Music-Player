@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Music Player</title>
     <style>
         * {
             margin: 0;
@@ -102,6 +102,11 @@
             color: white;
         }
 
+        .sno {
+            color: white;
+            text-align: center;
+        }
+
         @media only screen and (max-width:768px) {
             body {
                 overflow-x: hidden;
@@ -154,6 +159,9 @@
 <body>
     <div class="container">
         <h2>Kapil's Music Player</h2> <br>
+        <div class="sno">
+            Song No :<span id="songPrint">1</span>
+        </div>
         <div class="head">
             <div class="left">
                 <div class="img-div">
@@ -179,6 +187,7 @@
     </div>
 
     <script>
+
         var a = 0;
         var audio = document.getElementById("audio");
         var ad = document.getElementById("ad");
@@ -187,6 +196,7 @@
         var prevBtn = document.querySelector(".prev-btn");
         var nextBtn = document.querySelector(".next-btn");
         var seekSlider = document.getElementById("seekSlider");
+        var songPrint = document.getElementById("songPrint");
         var songNumber = 0;
 
         const songNames = [
@@ -208,7 +218,7 @@
         ]
 
         const playSong = () => {
-            // alert(songNumber)
+            songPrint.textContent = songNumber + 1;
             if (a == 0) {
                 if (ad.paused) {
                     pic.src = songNames[songNumber].imgSrc;
@@ -227,26 +237,73 @@
             }
         };
 
+        // const nextSong = () => {
+        //     if (songNames.length > 0) {
+        //         songNumber++;
+        //         songPrint.textContent = songNumber + 1;
+        //         pic.src = songNames[songNumber].imgSrc;
+        //         ad.src = songNames[songNumber].src;
+        //         ad.play();
+        //         songName.textContent = songNames[songNumber].name;
+        //     }
+        //     else{
+        //         alert("No more songs");
+        //     }
+        // }
+        // const nextSong = () => {
+        //     if (songNames.length > 3 && songNumber >= 3) {
+        //         alert("No more songs");
+        //     } else if (songNames.length > 0) {
+        //         songNumber++;
+        //         songPrint.textContent = songNumber + 1;
+        //         pic.src = songNames[songNumber].imgSrc;
+        //         ad.src = songNames[songNumber].src;
+        //         ad.play();
+        //         songName.textContent = songNames[songNumber].name;
+        //     } else {
+        //         alert("No more songs");
+        //     }
+        // }
+
+
+        // const prevSong = () => {
+        //     // alert(songNumber)
+        //     songNumber--;
+        //     songPrint.textContent = songNumber + 1;
+        //     pic.src = songNames[songNumber].imgSrc;
+        //     ad.src = songNames[songNumber].src;
+        //     ad.play();
+        //     songName.textContent = songNames[songNumber].name;
+        //     // a = 2
+
+        // }
+
+
         const nextSong = () => {
-            songNumber++;
-            // alert(songNumber)
-            pic.src = songNames[songNumber].imgSrc;
-            ad.src = songNames[songNumber].src;
-            ad.play();
-            songName.textContent = songNames[songNumber].name;
-            // a = 2
+            if (songNumber >= 2) {
+                alert("No more songs");
+            } else {
+                songNumber++;
+                songPrint.textContent = songNumber + 1;
+                pic.src = songNames[songNumber].imgSrc;
+                ad.src = songNames[songNumber].src;
+                ad.play();
+                songName.textContent = songNames[songNumber].name;
+            }
+        };
 
-        }
         const prevSong = () => {
-            // alert(songNumber)
-            songNumber--;
-            pic.src = songNames[songNumber].imgSrc;
-            ad.src = songNames[songNumber].src;
-            ad.play();
-            songName.textContent = songNames[songNumber].name;
-            // a = 2
-
-        }
+            if (songNumber <= 0) {
+                alert("No more songs");
+            } else {
+                songNumber--;
+                songPrint.textContent = songNumber + 1;
+                pic.src = songNames[songNumber].imgSrc;
+                ad.src = songNames[songNumber].src;
+                ad.play();
+                songName.textContent = songNames[songNumber].name;
+            }
+        };
 
         ad.addEventListener('timeupdate', updateSeekBar);
 
