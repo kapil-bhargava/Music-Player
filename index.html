@@ -158,6 +158,7 @@
         i{
             color: white;
             margin: 20px 10px;
+            font-size:20px;
         }
     </style>
 </head>
@@ -232,9 +233,15 @@
                 if (ad.paused) {
                     pic.src = songNames[songNumber].imgSrc;
                     ad.src = songNames[songNumber].src;
-                    ad.play();
+                    if(playBtn.classList.contains("fa-play")){
                     playBtn.classList.remove("fa-play");
                     playBtn.classList.add("fa-pause");
+                    }
+                    else{
+                        playBtn.classList.remove("fa-pause");
+                        playBtn.classList.add("fa-play");
+                    }
+                    ad.play();
                     songName.textContent = songNames[songNumber].name;
                     // updateSeekBar();
                     a = 1;
@@ -258,9 +265,15 @@
                 songPrint.textContent = songNumber + 1;
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
+                if(playBtn.classList.contains("fa-play")){
+                    playBtn.classList.remove("fa-play");
+                    playBtn.classList.add("fa-pause");
+                    }
+                    else{
+                        playBtn.classList.remove("fa-pause");
+                        playBtn.classList.add("fa-play");
+                    }
                 ad.play();
-                playBtn.classList.remove("fa-play");
-                playBtn.classList.add("fa-pause");
                 songName.textContent = songNames[songNumber].name;
             }
         };
@@ -273,9 +286,15 @@
                 songPrint.textContent = songNumber + 1;
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
+                if(playBtn.classList.contains("fa-play")){
+                    playBtn.classList.remove("fa-play");
+                    playBtn.classList.add("fa-pause");
+                    }
+                    else{
+                        playBtn.classList.remove("fa-pause");
+                        playBtn.classList.add("fa-play");
+                    }
                 ad.play();
-                playBtn.classList.remove("fa-play");
-                playBtn.classList.add("fa-pause");
                 songName.textContent = songNames[songNumber].name;
             }
         };
