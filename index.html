@@ -109,6 +109,28 @@
             text-align: center;
         }
 
+        .a2 {
+            width: 130px;
+            /* padding: -10px; */
+            border: 1px solid white;
+            text-align: center;
+            /* background-color: red; */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 550px;
+        }
+
+        .a2 a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: yellowgreen; */
+            padding: -5px 10px;
+        }
+
         @media only screen and (max-width:768px) {
             body {
                 overflow-x: hidden;
@@ -155,10 +177,11 @@
 
 
         }
-        i{
+
+        i {
             color: white;
             margin: 20px 10px;
-            font-size:20px;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -172,7 +195,7 @@
         <div class="head">
             <div class="left">
                 <div class="img-div">
-                    <img id="pic" src="/bb2.jpg" alt="">
+                    <img id="pic" src="bb2.jpg" alt="">
                 </div> <br>
                 <div class="status">
                     <b id="pp">Playing :</b><span class="songName">...</span>
@@ -186,12 +209,17 @@
                 <i id="pl" class="fa-solid fa-play" onclick="playSong()"></i>
                 <!-- <i class="fa-solid fa-pause"></i> -->
                 <i class="fa-solid fa-forward-step" onclick="nextSong()"></i>
-               
+
             </div>
             <!-- <div class="right">
                 <p>Volume Controller</p>
                 <input type="range" min="0" value="0" max="100" step="0.01">
             </div> -->
+            <div class="a2">
+    
+                <a href="audio/Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3"
+                    download="kapilsongs.mp3">Download <i class="fa fa-download"></i> </a>
+            </div>
         </div>
     </div>
 
@@ -233,11 +261,11 @@
                 if (ad.paused) {
                     pic.src = songNames[songNumber].imgSrc;
                     ad.src = songNames[songNumber].src;
-                    if(playBtn.classList.contains("fa-play")){
-                    playBtn.classList.remove("fa-play");
-                    playBtn.classList.add("fa-pause");
+                    if (playBtn.classList.contains("fa-play")) {
+                        playBtn.classList.remove("fa-play");
+                        playBtn.classList.add("fa-pause");
                     }
-                    else{
+                    else {
                         playBtn.classList.remove("fa-pause");
                         playBtn.classList.add("fa-play");
                     }
@@ -256,7 +284,7 @@
             }
         };
 
-       
+
         const nextSong = () => {
             if (songNumber >= 2) {
                 alert("No more songs");
@@ -265,14 +293,14 @@
                 songPrint.textContent = songNumber + 1;
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
-                if(playBtn.classList.contains("fa-play")){
+                if (playBtn.classList.contains("fa-play")) {
                     playBtn.classList.remove("fa-play");
                     playBtn.classList.add("fa-pause");
-                    }
-                    else{
-                        playBtn.classList.remove("fa-pause");
-                        playBtn.classList.add("fa-play");
-                    }
+                }
+                else {
+                    playBtn.classList.remove("fa-pause");
+                    playBtn.classList.add("fa-play");
+                }
                 ad.play();
                 songName.textContent = songNames[songNumber].name;
             }
@@ -286,14 +314,14 @@
                 songPrint.textContent = songNumber + 1;
                 pic.src = songNames[songNumber].imgSrc;
                 ad.src = songNames[songNumber].src;
-                if(playBtn.classList.contains("fa-play")){
+                if (playBtn.classList.contains("fa-play")) {
                     playBtn.classList.remove("fa-play");
                     playBtn.classList.add("fa-pause");
-                    }
-                    else{
-                        playBtn.classList.remove("fa-pause");
-                        playBtn.classList.add("fa-play");
-                    }
+                }
+                else {
+                    playBtn.classList.remove("fa-pause");
+                    playBtn.classList.add("fa-play");
+                }
                 ad.play();
                 songName.textContent = songNames[songNumber].name;
             }
@@ -313,6 +341,7 @@
             const seekTo = (seekSlider.value / 100) * ad.duration;
             ad.currentTime = seekTo;
         });
+
 
 
 
