@@ -126,9 +126,13 @@
                 text-align: center;
                 /* background-color: red; */
                 position: absolute;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 left: 50%;
                 transform: translateX(-50%);
-                top: 550px;
+                top: 70px;
             }
 
             .a2 a {
@@ -139,6 +143,10 @@
                 align-items: center;
                 /* background-color: yellowgreen; */
                 padding: -5px 10px;
+            }
+            .btns-div{
+                /* background-color: red; */
+                position: relative;
             }
 
             @media only screen and (max-width:768px) {
@@ -215,21 +223,24 @@
                 <audio id="ad">
                     <source id="audio">
                 </audio>
+                <div class="btns-div">
                 <i class="fa-solid fa-backward-step" onclick="prevSong()"></i>
                 <i id="pl" class="fa-solid fa-play" onclick="playSong()"></i>
                 <!-- <i class="fa-solid fa-pause"></i> -->
                 <i class="fa-solid fa-forward-step" onclick="nextSong()"></i>
+                <div class="a2">
+
+                    <a id="anchor" href="audio/Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3"
+                        download="">Download <i class="fa fa-download"></i> </a>
+            </div>
+            </div>
 
             </div>
             <!-- <div class="right">
                 <p>Volume Controller</p>
                 <input type="range" min="0" value="0" max="100" step="0.01">
             </div> -->
-            <div class="a2">
-
-                <a href="audio/Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 320 Kbps.mp3"
-                    download="kapilsongs.mp3">Download <i class="fa fa-download"></i> </a>
-        </div>
+          
     </div>
  
     </div>
@@ -247,6 +258,7 @@
         var nextBtn = document.querySelector(".next-btn");
         var seekSlider = document.getElementById("seekSlider");
         var songPrint = document.getElementById("songPrint");
+        var anchorTag= document.getElementById("anchor")
         var songNumber = 0;
 
         const songNames = [
@@ -282,6 +294,8 @@
                         playBtn.classList.add("fa-play");
                     }
                     ad.play();
+                    anchorTag.href=songNames[songNumber].src;
+                    anchorTag.download=songNames[songNumber].name
                     songName.textContent = songNames[songNumber].name;
                     // updateSeekBar();
                     a = 1;
@@ -314,6 +328,8 @@
                     playBtn.classList.add("fa-play");
                 }
                 ad.play();
+                anchorTag.href=songNames[songNumber].src;
+                anchorTag.download=songNames[songNumber].name
                 songName.textContent = songNames[songNumber].name;
             }
         };
@@ -335,6 +351,8 @@
                     playBtn.classList.add("fa-play");
                 }
                 ad.play();
+                anchorTag.href=songNames[songNumber].src
+                anchorTag.download=songNames[songNumber].name
                 songName.textContent = songNames[songNumber].name;
             }
         };
